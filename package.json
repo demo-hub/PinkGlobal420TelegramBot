@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Bot for Telegram that gives you the approximate time until the next 4:20 in the world",
   "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-telegram-bot-api": "^0.40.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,10 +23,5 @@
   "bugs": {
     "url": "https://github.com/demo-hub/PinkGlobal420TelegramBot/issues"
   },
-  "homepage": "https://github.com/demo-hub/PinkGlobal420TelegramBot#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/demo-hub/PinkGlobal420TelegramBot#readme"
 }
