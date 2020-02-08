@@ -15,7 +15,10 @@ If you have any suggestion, doubt or contribution you can hit me up in Telegram 
 
 ## Roadmap
 
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+I have some ideas like:
+
+* Command to give how much time is left to the next 4:20
+* Command to give how much time is left to the next 4:20 in a specific city
 
 ## Contributing
 
