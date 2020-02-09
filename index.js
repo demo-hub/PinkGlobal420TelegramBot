@@ -21,8 +21,6 @@ server.listen(process.env.PORT || 5000, () => {
 
         var minutesUTC = currentDate.getUTCMinutes();
 
-        console.log(minutesUTC)
-
         if (minutesUTC == process.env.ALARM_MINUTE) {
             switch (hourUTC) {
                 case process.env.ALARM_HOUR:
