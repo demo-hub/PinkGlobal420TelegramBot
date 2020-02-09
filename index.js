@@ -1,74 +1,85 @@
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
+const http = require('http');
 
 const token = '1021103176:AAGXfMQTZWKuhBQDBwW6NG8SXJLBwzhTb8Y';
 const bot = new TelegramBot(token, { polling: true });
 
-setInterval(function() {
-    bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'test')
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World');
+});
 
-    var currentDate = new Date();
+server.listen(process.env.PORT || 5000, () => {
+    console.log(`Server running`);
 
-    var hourUTC = currentDate.getUTCHours();
+    setInterval(function() {
+        bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'test')
 
-    var minutesUTC = currentDate.getUTCMinutes();
+        var currentDate = new Date();
 
-    if (minutesUTC == process.env.ALARM_MINUTE) {
-        switch (hourUTC) {
-            case process.env.ALARM_HOUR:
-                sendMessageToChannel('UTC');
-                break;
-            case process.env.ALARM_HOUR - 1:
-                sendMessageToChannel('UTC+1');
-                break;
-            case process.env.ALARM_HOUR - 2:
-                sendMessageToChannel('UTC+2');
-                break;
-            case process.env.ALARM_HOUR - 3:
-                sendMessageToChannel('UTC+3');
-                break;
-            case process.env.ALARM_HOUR - 4:
-                sendMessageToChannel('UTC+4');
-                break;
-            case process.env.ALARM_HOUR - 5:
-                sendMessageToChannel('UTC+5');
-                break;
-            case process.env.ALARM_HOUR - 6:
-                sendMessageToChannel('UTC+6');
-                break;
-            case process.env.ALARM_HOUR - 7:
-                sendMessageToChannel('UTC+7');
-                break;
-            case process.env.ALARM_HOUR - 8:
-                sendMessageToChannel('UTC+8');
-                break;
-            case process.env.ALARM_HOUR - 9:
-                sendMessageToChannel('UTC+9');
-                break;
-            case process.env.ALARM_HOUR - 10:
-                sendMessageToChannel('UTC+10');
-                break;
-            case process.env.ALARM_HOUR - 11:
-                sendMessageToChannel('UTC+11');
-                break;
-            case process.env.ALARM_HOUR - 12:
-                sendMessageToChannel('UTC+12');
-                break;
-            case process.env.ALARM_HOUR - 13:
-                sendMessageToChannel('UTC+13');
-                break;
-            case process.env.ALARM_HOUR - 14:
-                sendMessageToChannel('UTC+14');
-                break;
-            case process.env.ALARM_HOUR - 15:
-                sendMessageToChannel('UTC+15');
-                break;
-            case process.env.ALARM_HOUR - 16:
-                sendMessageToChannel('UTC+16');
-                break;
+        var hourUTC = currentDate.getUTCHours();
+
+        var minutesUTC = currentDate.getUTCMinutes();
+
+        if (minutesUTC == process.env.ALARM_MINUTE) {
+            switch (hourUTC) {
+                case process.env.ALARM_HOUR:
+                    sendMessageToChannel('UTC');
+                    break;
+                case process.env.ALARM_HOUR - 1:
+                    sendMessageToChannel('UTC+1');
+                    break;
+                case process.env.ALARM_HOUR - 2:
+                    sendMessageToChannel('UTC+2');
+                    break;
+                case process.env.ALARM_HOUR - 3:
+                    sendMessageToChannel('UTC+3');
+                    break;
+                case process.env.ALARM_HOUR - 4:
+                    sendMessageToChannel('UTC+4');
+                    break;
+                case process.env.ALARM_HOUR - 5:
+                    sendMessageToChannel('UTC+5');
+                    break;
+                case process.env.ALARM_HOUR - 6:
+                    sendMessageToChannel('UTC+6');
+                    break;
+                case process.env.ALARM_HOUR - 7:
+                    sendMessageToChannel('UTC+7');
+                    break;
+                case process.env.ALARM_HOUR - 8:
+                    sendMessageToChannel('UTC+8');
+                    break;
+                case process.env.ALARM_HOUR - 9:
+                    sendMessageToChannel('UTC+9');
+                    break;
+                case process.env.ALARM_HOUR - 10:
+                    sendMessageToChannel('UTC+10');
+                    break;
+                case process.env.ALARM_HOUR - 11:
+                    sendMessageToChannel('UTC+11');
+                    break;
+                case process.env.ALARM_HOUR - 12:
+                    sendMessageToChannel('UTC+12');
+                    break;
+                case process.env.ALARM_HOUR - 13:
+                    sendMessageToChannel('UTC+13');
+                    break;
+                case process.env.ALARM_HOUR - 14:
+                    sendMessageToChannel('UTC+14');
+                    break;
+                case process.env.ALARM_HOUR - 15:
+                    sendMessageToChannel('UTC+15');
+                    break;
+                case process.env.ALARM_HOUR - 16:
+                    sendMessageToChannel('UTC+16');
+                    break;
+            }
         }
-    }
-}, 60000)
+    }, 60000)
+});
 
 function sendMessageToChannel(timezone) {
 
