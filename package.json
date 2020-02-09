@@ -13,7 +13,7 @@
     "devDependencies": {},
     "scripts": {
         "start": "node index.js",
-        "build": "npm build --output public"
+        "build": "npm build"
     },
     "engines": {
         "node": "10.15.1"
