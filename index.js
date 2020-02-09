@@ -2,7 +2,7 @@ require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
 const http = require('http');
 
-const token = '1021103176:AAGXfMQTZWKuhBQDBwW6NG8SXJLBwzhTb8Y';
+const token = process.env.TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 const server = http.createServer((req, res) => {
@@ -15,8 +15,6 @@ server.listen(process.env.PORT || 5000, () => {
     console.log(`Server running`);
 
     setInterval(function() {
-        bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'test')
-
         var currentDate = new Date();
 
         var hourUTC = currentDate.getUTCHours();
