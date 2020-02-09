@@ -5,6 +5,8 @@ const token = '1021103176:AAGXfMQTZWKuhBQDBwW6NG8SXJLBwzhTb8Y';
 const bot = new TelegramBot(token, { polling: true });
 
 setInterval(function() {
+    bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'test')
+
     var currentDate = new Date();
 
     var hourUTC = currentDate.getUTCHours();

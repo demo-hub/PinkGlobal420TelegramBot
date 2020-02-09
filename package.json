@@ -12,10 +12,11 @@
     },
     "devDependencies": {},
     "scripts": {
-        "start": "node index.js"
+        "start": "node index.js",
+        "build": "npm build --output public"
     },
     "engines": {
-        "node": "10.3.0"
+        "node": "10.15.1"
     },
     "repository": {
         "type": "git",
