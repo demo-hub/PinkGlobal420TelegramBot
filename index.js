@@ -22,39 +22,49 @@ server.listen(process.env.PORT || 5000, () => {
         var minutesUTC = currentDate.getUTCMinutes();
 
         if (minutesUTC == process.env.ALARM_MINUTE) {
-            switch (hourUTC) {
+            switch (parseInt(hourUTC)) {
                 case process.env.ALARM_HOUR:
                     sendMessageToChannel('UTC');
                     break;
-                case process.env.ALARM_HOUR - 1:
-                    sendMessageToChannel('UTC+1');
+                case process.env.ALARM_HOUR < 1 ? 24 + (process.env.ALARM_HOUR - 1):
+                    process.env.ALARM_HOUR - 1:
+                        sendMessageToChannel('UTC+1');
                     break;
-                case process.env.ALARM_HOUR - 2:
-                    sendMessageToChannel('UTC+2');
+                case process.env.ALARM_HOUR < 2 ? 24 + (process.env.ALARM_HOUR - 2):
+                    process.env.ALARM_HOUR - 2:
+                        sendMessageToChannel('UTC+2');
                     break;
-                case process.env.ALARM_HOUR - 3:
-                    sendMessageToChannel('UTC+3');
+                case process.env.ALARM_HOUR < 3 ? 24 + (process.env.ALARM_HOUR - 3):
+                    process.env.ALARM_HOUR - 3:
+                        sendMessageToChannel('UTC+3');
                     break;
-                case process.env.ALARM_HOUR - 4:
-                    sendMessageToChannel('UTC+4');
+                case process.env.ALARM_HOUR < 4 ? 24 + (process.env.ALARM_HOUR - 4):
+                    process.env.ALARM_HOUR - 4:
+                        sendMessageToChannel('UTC+4');
                     break;
-                case process.env.ALARM_HOUR - 5:
-                    sendMessageToChannel('UTC+5');
+                case process.env.ALARM_HOUR < 5 ? 24 + (process.env.ALARM_HOUR - 5):
+                    process.env.ALARM_HOUR - 5:
+                        sendMessageToChannel('UTC+5');
                     break;
-                case process.env.ALARM_HOUR - 6:
-                    sendMessageToChannel('UTC+6');
+                case process.env.ALARM_HOUR < 6 ? 24 + (process.env.ALARM_HOUR - 6):
+                    process.env.ALARM_HOUR - 6:
+                        sendMessageToChannel('UTC+6');
                     break;
-                case process.env.ALARM_HOUR - 7:
-                    sendMessageToChannel('UTC+7');
+                case process.env.ALARM_HOUR < 7 ? 24 + (process.env.ALARM_HOUR - 7):
+                    process.env.ALARM_HOUR - 7:
+                        sendMessageToChannel('UTC+7');
                     break;
-                case process.env.ALARM_HOUR - 8:
-                    sendMessageToChannel('UTC+8');
+                case process.env.ALARM_HOUR < 8 ? 24 + (process.env.ALARM_HOUR - 8):
+                    process.env.ALARM_HOUR - 8:
+                        sendMessageToChannel('UTC+8');
                     break;
-                case process.env.ALARM_HOUR - 9:
-                    sendMessageToChannel('UTC+9');
+                case process.env.ALARM_HOUR < 9 ? 24 + (process.env.ALARM_HOUR - 9):
+                    process.env.ALARM_HOUR - 9:
+                        sendMessageToChannel('UTC+9');
                     break;
-                case process.env.ALARM_HOUR - 10:
-                    sendMessageToChannel('UTC+10');
+                case process.env.ALARM_HOUR < 10 ? 24 + (process.env.ALARM_HOUR - 10):
+                    process.env.ALARM_HOUR - 10:
+                        sendMessageToChannel('UTC+10');
                     break;
                 case process.env.ALARM_HOUR - 11:
                     sendMessageToChannel('UTC+11');
