@@ -29,7 +29,8 @@ To run this bot in your localhost, you have to run *npm install* to install all 
 
 ALARM_MINUTE=20
 ALARM_HOUR=4
-CHAT_ID= your_chat_id
+CHAT_ID=your_chat_id
+TOKEN=your_bot_token
 
 Obviously, you can change the ALARM_MINUTE and ALARM_HOUR variables to the time you want the notifications. If you don't know how to get the chat id you can see some suggestions in https://stackoverflow.com/questions/36099709/how-get-right-telegram-channel-id/45577616 or https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id.
 
