@@ -66,23 +66,29 @@ server.listen(process.env.PORT || 5000, () => {
                     process.env.ALARM_HOUR - 10:
                         sendMessageToChannel('UTC+10');
                     break;
-                case process.env.ALARM_HOUR - 11:
-                    sendMessageToChannel('UTC+11');
+                case process.env.ALARM_HOUR < 11 ? 24 + (process.env.ALARM_HOUR - 11):
+                    process.env.ALARM_HOUR - 11:
+                        sendMessageToChannel('UTC+11');
                     break;
-                case process.env.ALARM_HOUR - 12:
-                    sendMessageToChannel('UTC+12');
+                case process.env.ALARM_HOUR < 12 ? 24 + (process.env.ALARM_HOUR - 12):
+                    process.env.ALARM_HOUR - 12:
+                        sendMessageToChannel('UTC+12');
                     break;
-                case process.env.ALARM_HOUR - 13:
-                    sendMessageToChannel('UTC+13');
+                case process.env.ALARM_HOUR < 13 ? 24 + (process.env.ALARM_HOUR - 13):
+                    process.env.ALARM_HOUR - 13:
+                        sendMessageToChannel('UTC+13');
                     break;
-                case process.env.ALARM_HOUR - 14:
-                    sendMessageToChannel('UTC+14');
+                case process.env.ALARM_HOUR < 14 ? 24 + (process.env.ALARM_HOUR - 14):
+                    process.env.ALARM_HOUR - 14:
+                        sendMessageToChannel('UTC+14');
                     break;
-                case process.env.ALARM_HOUR - 15:
-                    sendMessageToChannel('UTC+15');
+                case process.env.ALARM_HOUR < 15 ? 24 + (process.env.ALARM_HOUR - 15):
+                    process.env.ALARM_HOUR - 15:
+                        sendMessageToChannel('UTC+15');
                     break;
-                case process.env.ALARM_HOUR - 16:
-                    sendMessageToChannel('UTC+16');
+                case process.env.ALARM_HOUR < 16 ? 24 + (process.env.ALARM_HOUR - 16):
+                    process.env.ALARM_HOUR - 16:
+                        sendMessageToChannel('UTC+16');
                     break;
             }
         }
