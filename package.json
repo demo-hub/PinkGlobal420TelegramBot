@@ -1,6 +1,6 @@
 {
     "name": "pinkglobal420telegrambot",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Bot for Telegram that gives you the approximate time until the next 4:20 in the world",
     "main": "index.js",
     "dependencies": {

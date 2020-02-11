@@ -14,6 +14,8 @@ const server = http.createServer((req, res) => {
 server.listen(process.env.PORT || 5000, () => {
     console.log(`Server running`);
 
+    bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'Updated to version 2.0.0\nAdded:\n- /cities command that gives the main cities of each timezone\nFixed:\n- Fixed the setInterval time to avoid double notifications\n- Notification in the alarm hour\n- City in UTC+11 timezone was wrong (changed to Norfolk Island)\n- Typo in Kiribati (was Kirimati)\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot')
+
     setInterval(function() {
         var currentDate = new Date();
 
@@ -23,7 +25,7 @@ server.listen(process.env.PORT || 5000, () => {
 
         if (minutesUTC == process.env.ALARM_MINUTE) {
             switch (parseInt(hourUTC)) {
-                case process.env.ALARM_HOUR:
+                case parseInt(process.env.ALARM_HOUR):
                     sendMessageToChannel('UTC');
                     break;
                 case process.env.ALARM_HOUR < 1 ? 24 + (process.env.ALARM_HOUR - 1):
@@ -92,7 +94,94 @@ server.listen(process.env.PORT || 5000, () => {
                     break;
             }
         }
-    }, 50000)
+    }, 60000)
+
+    bot.onText(/\/cities(.?)/, (msg, match) => {
+        const timezone = match.input.replace('/cities', '').trim()
+        if (timezone) {
+            mainCities(msg.chat.id, timezone)
+        } else {
+            bot.sendMessage(msg.chat.id, 'What timezone?', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'UTC',
+                            callback_data: 'UTC'
+                        }],
+                        [{
+                            text: 'UTC+1',
+                            callback_data: 'UTC+1'
+                        }],
+                        [{
+                            text: 'UTC+2',
+                            callback_data: 'UTC+2'
+                        }],
+                        [{
+                            text: 'UTC+3',
+                            callback_data: 'UTC+3'
+                        }],
+                        [{
+                            text: 'UTC+4',
+                            callback_data: 'UTC+4'
+                        }],
+                        [{
+                            text: 'UTC+5',
+                            callback_data: 'UTC+5'
+                        }],
+                        [{
+                            text: 'UTC+6',
+                            callback_data: 'UTC+6'
+                        }],
+                        [{
+                            text: 'UTC+7',
+                            callback_data: 'UTC+7'
+                        }],
+                        [{
+                            text: 'UTC+8',
+                            callback_data: 'UTC+8'
+                        }],
+                        [{
+                            text: 'UTC+9',
+                            callback_data: 'UTC+9'
+                        }],
+                        [{
+                            text: 'UTC+10',
+                            callback_data: 'UTC+10'
+                        }],
+                        [{
+                            text: 'UTC+11',
+                            callback_data: 'UTC+11'
+                        }],
+                        [{
+                            text: 'UTC+12',
+                            callback_data: 'UTC+12'
+                        }],
+                        [{
+                            text: 'UTC+13',
+                            callback_data: 'UTC+13'
+                        }],
+                        [{
+                            text: 'UTC+14',
+                            callback_data: 'UTC+14'
+                        }],
+                        [{
+                            text: 'UTC+15',
+                            callback_data: 'UTC+15'
+                        }],
+                        [{
+                            text: 'UTC+16',
+                            callback_data: 'UTC+16'
+                        }]
+                    ]
+                }
+            })
+
+            bot.on('callback_query', (callbackQuery) => {
+                mainCities(callbackQuery.message.chat.id, callbackQuery.data)
+            })
+        }
+    })
+
 });
 
 function sendMessageToChannel(timezone) {
@@ -134,13 +223,13 @@ function sendMessageToChannel(timezone) {
             message = "It's 4:20 in Melbourne! Blaze it!"
             break;
         case 'UTC+11':
-            message = "It's 4:20 in Suva! Blaze it!"
+            message = "It's 4:20 in Norfollk Island! Blaze it!"
             break;
         case 'UTC+12':
             message = "It's 4:20 in Auckland! Blaze it!"
             break;
         case 'UTC+13':
-            message = "It's 4:20 in Kirimati! Blaze it!"
+            message = "It's 4:20 in Kiribati! Blaze it!"
             break;
         case 'UTC+14':
             message = "It's 4:20 in Adak! Blaze it!"
@@ -155,4 +244,63 @@ function sendMessageToChannel(timezone) {
 
     bot.sendMessage(chat_id = process.env.CHAT_ID, text = message)
 
+}
+
+function mainCities(chatId, timezone) {
+    switch (timezone) {
+        case 'UTC':
+            bot.sendMessage(chatId, 'Main cities: London, Dublin, Lisbon, Abidjan, Accra, Dakar')
+            break;
+        case 'UTC+1':
+            bot.sendMessage(chatId, 'Main cities: Berlin, Rome, Paris, Madrid, Warsaw, Lagos, Kinshasa, Algiers, Casablanca')
+            break;
+        case 'UTC+2':
+            bot.sendMessage(chatId, 'Main cities: Cairo, Johannesburg, Khartoum, Kiev, Bucharest, Athens, Jerusalem')
+            break;
+        case 'UTC+3':
+            bot.sendMessage(chatId, 'Main cities: Moscow, Istanbul, Riyadh, Baghdad, Addis Ababa, Doha')
+            break;
+        case 'UTC+4':
+            bot.sendMessage(chatId, 'Main cities: Dubai, Baku, Tbilisi, Yerevan, Samara')
+            break;
+        case 'UTC+5':
+            bot.sendMessage(chatId, 'Main cities: Karachi, Tashkent, Yekaterinburg')
+            break;
+        case 'UTC+6':
+            bot.sendMessage(chatId, 'Main cities: Dhaka, Almaty, Omsk')
+            break;
+        case 'UTC+7':
+            bot.sendMessage(chatId, 'Main cities: Jakarta, Ho Chi Minh City, Bangkok, Krasnoyarsk')
+            break;
+        case 'UTC+8':
+            bot.sendMessage(chatId, 'Main cities: Shanghai, Taipei, Kuala Lumpur, Singapore, Perth, Manila, Makassar, Irkutsk')
+            break;
+        case 'UTC+9':
+            bot.sendMessage(chatId, 'Main cities: Tokyo, Seoul, Pyongyang, Ambon, Yakutsk')
+            break;
+        case 'UTC+10':
+            bot.sendMessage(chatId, 'Main cities: Sydney, Port Moresby, Vladivostok')
+            break;
+        case 'UTC+11':
+            bot.sendMessage(chatId, 'Main cities: Norfolk Island')
+            break;
+        case 'UTC+12':
+            bot.sendMessage(chatId, 'Main cities: Auckland, Suva, Petropavlovsk-Kamchatsky')
+            break;
+        case 'UTC+13':
+            bot.sendMessage(chatId, 'Main cities: Kiribati')
+            break;
+        case 'UTC+14':
+            bot.sendMessage(chatId, 'Main cities: Adak')
+            break;
+        case 'UTC+15':
+            bot.sendMessage(chatId, 'Main cities: Anchorage')
+            break;
+        case 'UTC+16':
+            bot.sendMessage(chatId, 'Main cities: Vancouver')
+            break;
+        default:
+            bot.sendMessage(chatId, 'Invalid timezone or timezone not supported yet')
+            break;
+    }
 }

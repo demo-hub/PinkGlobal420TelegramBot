@@ -1,4 +1,4 @@
-# PinkGlobal420TelegramBot
+# 420 aka Pink Bot
 Bot for Telegram that gives a notification when it's 4:20 around the world. Various timezones supported
 
 ## Visuals
