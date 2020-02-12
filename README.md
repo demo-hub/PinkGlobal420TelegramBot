@@ -17,7 +17,6 @@ If you have any suggestion, doubt or contribution you can hit me up in Telegram 
 
 I have some ideas like:
 
-* Command to give how much time is left to the next 4:20
 * Command to give how much time is left to the next 4:20 in a specific city
 * Command to configure which city appears
 * Random city on the notification
