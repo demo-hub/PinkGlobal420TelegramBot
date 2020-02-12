@@ -1,3 +1,14 @@
+## [3.0.0] - 11/02/2020
+
+### Added
+
+- Message on mention
+- '/next' command to give how much time is left to the next 4:20 or to the next 4:20 in a specific city
+
+### Changed
+
+- Refatoring of the code in multiple files
+
 ## [2.0.0] - 11/02/2020
 
 ### Added
