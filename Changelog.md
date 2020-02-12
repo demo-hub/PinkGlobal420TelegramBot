@@ -1,4 +1,4 @@
-## [3.0.0] - 11/02/2020
+## [3.0.0] - 12/02/2020
 
 ### Added
 
@@ -8,6 +8,8 @@
 ### Changed
 
 - Refatoring of the code in multiple files
+- Added Riga as a main city in UTC+2
+- Message of UTC+2
 
 ## [2.0.0] - 11/02/2020
 

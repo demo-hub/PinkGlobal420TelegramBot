@@ -90,13 +90,13 @@ function sendMessageToChannel(bot, timezone) {
 
     switch (timezone) {
         case 'UTC':
-            message = 'São 4:20 no Porto! Faz eçe!'
+            message = 'São 4:20 no Porto! Faz eçe caralho!'
             break;
         case 'UTC+1':
             message = 'Són les 4:20 a Barcelona! Blau-la!'
             break;
         case 'UTC+2':
-            message = 'в Москве 4:20! Blaze это!'
+            message = 'Rīgā ir 4:20! Iededzini to!'
             break;
         case 'UTC+3':
             message = 'الساعة 4:20 في دبي! الحريق ذلك!'

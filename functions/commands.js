@@ -90,7 +90,7 @@ module.exports = {
     },
 
     mentions: function(bot) {
-        bot.onText(/@PinkGlobal420Bot(.?)/, (msg, match) => {
+        bot.onText(/(.?)@PinkGlobal420Bot(.?)/, (msg, match) => {
             bot.sendMessage(msg.chat.id, "Fazeçe irmão");
         })
     },
@@ -112,16 +112,18 @@ module.exports = {
                 timeoffset = hourUTC - process.env.ALARM_HOUR
             }
 
-            if (timeoffset == 0) {
-                if (minutesUTC < process.env.ALARM_MINUTE) {
-                    minutesLeft = process.env.ALARM_MINUTE - minutesUTC
-                } else {
-                    minutesLeft = (60 - minutesUTC) + process.env.ALARM_MINUTE
-                    timeoffset++
-                }
+            if (minutesUTC < process.env.ALARM_MINUTE) {
+                minutesLeft = parseInt(process.env.ALARM_MINUTE) - minutesUTC
+            } else {
+                minutesLeft = (60 - minutesUTC) + parseInt(process.env.ALARM_MINUTE)
+                timeoffset++
             }
 
-            nextCity(bot, timeoffset, minutesLeft)
+            if (timeoffset > 16) {
+                minutesLeft = 60 * (24 - timeoffset) - minutesLeft + parseInt(process.env.ALARM_MINUTE)
+            }
+
+            nextCity(bot, msg.chat.id, timeoffset, minutesLeft)
         })
     }
 }
@@ -135,7 +137,7 @@ function mainCities(bot, chatId, timezone) {
             bot.sendMessage(chatId, 'Main cities: Berlin, Rome, Paris, Madrid, Warsaw, Lagos, Kinshasa, Algiers, Casablanca')
             break;
         case 'UTC+2':
-            bot.sendMessage(chatId, 'Main cities: Cairo, Johannesburg, Khartoum, Kiev, Bucharest, Athens, Jerusalem')
+            bot.sendMessage(chatId, 'Main cities: RIGA, Cairo, Johannesburg, Khartoum, Kiev, Bucharest, Athens, Jerusalem')
             break;
         case 'UTC+3':
             bot.sendMessage(chatId, 'Main cities: Moscow, Istanbul, Riyadh, Baghdad, Addis Ababa, Doha')
@@ -185,12 +187,61 @@ function mainCities(bot, chatId, timezone) {
     }
 }
 
-function nextCity(bot, timeoffset, minutesLeft) {
+function nextCity(bot, chatId, timeoffset, minutesLeft) {
     switch (timeoffset) {
         case 0:
-            bot.sendMessage(`As próximas 4:20 são no Porto! Faltam ${minutesLeft} minutos`)
+            bot.sendMessage(chatId, `As próximas 4:20 são no Porto! Faltam ${minutesLeft} minutos`)
+            break;
         case 1:
-            bot.sendMessage(`Les properes 4:20 són a Barcelona! Resten ${minutesLeft} minuts`)
+            bot.sendMessage(chatId, `Les properes 4:20 són a Barcelona! Resten ${minutesLeft} minuts`)
+            break;
+        case 2:
+            bot.sendMessage(chatId, `Nākamie 4:20 nav pat Rīga! ${minutesLeft} minūtes jāiet`)
+            break;
+        case 3:
+            bot.sendMessage(chatId, `4:20 القادمة في دبي! ${minutesLeft} دقيقة للذهاب`)
+            break;
+        case 4:
+            bot.sendMessage(chatId, `اگلا 4:20 اسلام آباد میں ہے! ${minutesLeft} منٹ جانا ہے`)
+            break;
+        case 5:
+            bot.sendMessage(chatId, `Келесі 4:20 - Алматыда! ${minutesLeft} минут жүру керек`)
+            break;
+        case 6:
+            bot.sendMessage(chatId, `4:20 ถัดไปอยู่ในกรุงเทพ! ไป ${minutesLeft} นาที`)
+            break;
+        case 7:
+            bot.sendMessage(chatId, `接下来的4:20在香港！ ${minutesLeft}分钟`)
+            break;
+        case 8:
+            bot.sendMessage(chatId, `次の4:20は東京にあります！あと${minutesLeft}分`)
+            break;
+        case 9:
+            bot.sendMessage(chatId, `The next 4:20 are in Brisbane! ${minutesLeft} minutes to go`)
+            break;
+        case 10:
+            bot.sendMessage(chatId, `The next 4:20 are in Melbourne! ${minutesLeft} minutes to go`)
+            break;
+        case 11:
+            bot.sendMessage(chatId, `The next 4:20 are in Norfolk Island! ${minutesLeft} minutes to go`)
+            break;
+        case 12:
+            bot.sendMessage(chatId, `The next 4:20 are in Auckland! ${minutesLeft} minutes to go`)
+            break;
+        case 13:
+            bot.sendMessage(chatId, `The next 4:20 are in Kiribati! ${minutesLeft} minutes to go`)
+            break;
+        case 14:
+            bot.sendMessage(chatId, `The next 4:20 are in Adak! ${minutesLeft} minutes to go`)
+            break;
+        case 15:
+            bot.sendMessage(chatId, `The next 4:20 are in Anchorage! ${minutesLeft} minutes to go`)
+            break;
+        case 16:
+            bot.sendMessage(chatId, `The next 4:20 are in Vancouver! ${minutesLeft} minutes to go`)
+            break;
+        default:
+            bot.sendMessage(chatId, `The next 4:20 are in Vancouver! ${minutesLeft} minutes to go`)
             break;
     }
 }
