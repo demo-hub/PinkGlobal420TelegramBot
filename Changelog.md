@@ -1,3 +1,9 @@
+## [4.0.0] - 21/02/2020
+
+### Added
+
+- Command to test bot availability '/ping' to which it replies with 'Pong!'
+
 ## [3.0.0] - 12/02/2020
 
 ### Added
