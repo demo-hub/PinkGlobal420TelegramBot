@@ -3,7 +3,7 @@
 ### Added
 
 - Message on mention
-- '/next' command to give how much time is left to the next 4:20 or to the next 4:20 in a specific city
+- '/next' command to give how much time is left to the next 4:20
 
 ### Changed
 
