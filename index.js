@@ -74,14 +74,14 @@ server.listen(process.env.PORT || 5000, function () {
 function handleMentions(msg) {
     var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
     if (checkBotMention.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Fazeçe irmão");
+        bot.sendMessage(msg.chat.id, "Faze�e irm�o");
     }
 }
 function handleUserMessages(msg) {
     //This is a temporary solution
-    var checkDepression = new RegExp(/(.?)(deprimido|depressão|depressao|deprimir|deprimo)(.?)/);
+    var checkDepression = new RegExp(/(.?)(deprimido|depress�o|depressao|deprimir|deprimo)(.?)/);
     if (checkDepression.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Eu tenho a solução para a tua depressão. Deposita o teu salário na minha congragação.");
+        bot.sendMessage(msg.chat.id, "Eu tenho a solu��o para a tua depress�o. Deposita o teu sal�rio na minha congraga��o.");
     }
 }
 function handleCommand(msg) {

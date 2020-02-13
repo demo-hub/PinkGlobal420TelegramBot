@@ -1,6 +1,7 @@
 export let config = {
     "commands": [
         "cities",
-        "next"
+        "next",
+        "ping"
     ]
 }   
