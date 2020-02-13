@@ -21,7 +21,7 @@ let commands: BotCommand[] = [];
 loadCommands(`${__dirname}/functions/commands`);
 
 server.listen(process.env.PORT || 5000, () => {
-    console.log(`Server running`);
+    console.log(`Server running`); 
 
     bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.0.0\nAdded:\n- Command to test bot availability /ping to which it replies with Pong! (kaidey)\n- Message on the use of the keyword depressao (kaidey)\n- /help command to give a list of all the commands available\n- /globe command to give a Google Maps view of a city\nChanged:\n- Refactoring of all the code to use Typescript (kaidey)\n- The 4:20 notification has an image of the city\n- The 4:20 notification now has the country of the city\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!')
 
