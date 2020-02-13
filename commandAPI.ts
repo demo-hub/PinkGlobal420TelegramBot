@@ -1,5 +1,3 @@
-import { TelegramBot } from 'node-telegram-bot-api'
-
 export interface BotCommand {
 
     help(): string;

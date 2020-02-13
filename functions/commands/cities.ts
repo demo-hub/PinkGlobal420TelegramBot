@@ -1,5 +1,4 @@
 import { BotCommand } from "../../commandAPI"
-import * as Telegram from 'node-telegram-bot-api'
 
 require('dotenv').config()
 
@@ -12,7 +11,7 @@ export default class Cities implements BotCommand {
     }
 
     help(): string {
-        return ('Use this command to get all the cities available in this bot!')
+        return ('- /cities: Use this command to get all the cities available in this bot!')
     }
 
     isCommand(command: string): boolean {

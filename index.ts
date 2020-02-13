@@ -1,4 +1,4 @@
-const notification = require('./functions/timeNotification')
+import TimeNotification from './functions/timeNotification'
 require('dotenv').config()
 const http = require('http');
 
@@ -23,9 +23,9 @@ loadCommands(`${__dirname}/functions/commands`);
 server.listen(process.env.PORT || 5000, () => {
     console.log(`Server running`);
 
-    //bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'Updated to version 3.0.0\nAdded:\n- Message on mention\n- /next command to give how much time is left to the next 4:20 or to the next 4:20 in a specific city\nChanged:\n- Refactoring of the code in multiple files\n- Added Riga as a main city in UTC+2\n- Message of UTC+2\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot')
+    bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.0.0\nAdded:\n- Command to test bot availability /ping to which it replies with Pong! (kaidey)\n- Message on the use of the keyword depressao (kaidey)\n- /help command to give a list of all the commands available\n- /globe command to give a Google Maps view of a city\nChanged:\n- Refactoring of all the code to use Typescript (kaidey)\n- The 4:20 notification has an image of the city\n- The 4:20 notification now has the country of the city\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!')
 
-    notification.timeNotification(bot);
+    new TimeNotification().timeNotification(bot);
 
     bot.on("message", (msg) => {
 
@@ -61,17 +61,17 @@ function handleMentions(msg: any) {
     var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
 
     if (checkBotMention.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "FazeÁe irm„o");
+        bot.sendMessage(msg.chat.id, "Faze√ße irm√£o");
     }
 }
 
 function handleUserMessages(msg: any) {
 
     //This is a temporary solution
-    var checkDepression = new RegExp(/(.?)(deprimido|depress„o|depressao|deprimir|deprimo)(.?)/);
+    var checkDepression = new RegExp(/(.?)(deprimido|depress√£o|depressao|deprimir|deprimo)(.?)/);
 
     if (checkDepression.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Eu tenho a soluÁ„o para a tua depress„o. Deposita o teu sal·rio na minha congragaÁ„o.");
+        bot.sendMessage(msg.chat.id, "Eu tenho a solu√ß√£o para a tua depress√£o. Deposita o teu sal√°rio na minha congraga√ß√£o.");
     }
 
 }
@@ -82,7 +82,6 @@ async function handleCommand(msg: any) {
     let args = msg.text.split(" ").slice(1);
 
     for (const commandType of commands) {
-
         try {
             if (!commandType.isCommand(command)) {
                 continue;
@@ -100,13 +99,9 @@ async function handleCommand(msg: any) {
 function loadCommands(commandsPath: string) {
 
     //If command list doesn't exist or is empty
-    if (!botConfig.config.commands || (botConfig.config.commands as string[]).length === 0) { return; }
+    if (!botConfig.config.commands || (botConfig.config.commands as BotCommand[]).length === 0) { return; }
 
-    for (const commandName of botConfig.config.commands as string[]) {
-
-        const commandType = require(`${commandsPath}/${commandName}`).default;
-
-        const command = new commandType() as BotCommand;
+    for (const command of botConfig.config.commands as BotCommand[]) {
 
         commands.push(command);
     }

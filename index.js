@@ -35,8 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var notification = require('./functions/timeNotification');
+exports.__esModule = true;
+var timeNotification_1 = require("./functions/timeNotification");
 require('dotenv').config();
 var http = require('http');
 var TelegramBot = require('node-telegram-bot-api');
@@ -52,8 +52,8 @@ var commands = [];
 loadCommands(__dirname + "/functions/commands");
 server.listen(process.env.PORT || 5000, function () {
     console.log("Server running");
-    //bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'Updated to version 3.0.0\nAdded:\n- Message on mention\n- /next command to give how much time is left to the next 4:20 or to the next 4:20 in a specific city\nChanged:\n- Refactoring of the code in multiple files\n- Added Riga as a main city in UTC+2\n- Message of UTC+2\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot')
-    notification.timeNotification(bot);
+    bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.0.0\nAdded:\n- Command to test bot availability /ping to which it replies with Pong! (kaidey)\n- Message on the use of the keyword depressao (kaidey)\n- /help command to give a list of all the commands available\n- /globe command to give a Google Maps view of a city\nChanged:\n- Refactoring of all the code to use Typescript (kaidey)\n- The 4:20 notification has an image of the city\n- The 4:20 notification now has the country of the city\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!');
+    new timeNotification_1["default"]().timeNotification(bot);
     bot.on("message", function (msg) {
         var checkMention = new RegExp('^@');
         var checkCommand = new RegExp('^/');
@@ -74,14 +74,14 @@ server.listen(process.env.PORT || 5000, function () {
 function handleMentions(msg) {
     var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
     if (checkBotMention.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Faze�e irm�o");
+        bot.sendMessage(msg.chat.id, "Fazeçe irmão");
     }
 }
 function handleUserMessages(msg) {
     //This is a temporary solution
-    var checkDepression = new RegExp(/(.?)(deprimido|depress�o|depressao|deprimir|deprimo)(.?)/);
+    var checkDepression = new RegExp(/(.?)(deprimido|depressão|depressao|deprimir|deprimo)(.?)/);
     if (checkDepression.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Eu tenho a solu��o para a tua depress�o. Deposita o teu sal�rio na minha congraga��o.");
+        bot.sendMessage(msg.chat.id, "Eu tenho a solução para a tua depressão. Deposita o teu salário na minha congragação.");
     }
 }
 function handleCommand(msg) {
@@ -125,10 +125,7 @@ function loadCommands(commandsPath) {
         return;
     }
     for (var _i = 0, _a = botConfig.config.commands; _i < _a.length; _i++) {
-        var commandName = _a[_i];
-        var commandType = require(commandsPath + "/" + commandName).default;
-        var command = new commandType();
+        var command = _a[_i];
         commands.push(command);
     }
 }
-//# sourceMappingURL=index.js.map

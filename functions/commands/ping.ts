@@ -1,5 +1,4 @@
 import { BotCommand } from "../../commandAPI"
-import * as Telegram from 'node-telegram-bot-api'
 
 require('dotenv').config()
 
@@ -12,7 +11,7 @@ export default class Ping implements BotCommand {
     }
 
     help(): string {
-        return ('Use this command to test the bot\'\s availability!')
+        return ('- /ping: Use this command to test the bot\'\s availability!')
     }
 
     isCommand(command: string): boolean {

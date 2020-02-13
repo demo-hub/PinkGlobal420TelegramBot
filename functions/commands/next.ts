@@ -1,5 +1,4 @@
 ﻿import { BotCommand } from "../../commandAPI"
-import * as Telegram from 'node-telegram-bot-api'
 
 require('dotenv').config()
 
@@ -12,7 +11,7 @@ export default class Next implements BotCommand {
     }
 
     help(): string {
-        return ('Use this command to get the next city to reach the 4:20 mark!')
+        return ('- /next: Use this command to get the next city to reach the 4:20 mark!')
     }
 
     isCommand(command: string): boolean {
