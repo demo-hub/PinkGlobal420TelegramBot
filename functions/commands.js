@@ -125,6 +125,12 @@ module.exports = {
 
             nextCity(bot, msg.chat.id, timeoffset, minutesLeft)
         })
+    },
+
+    ping: function (bot) {
+        bot.onText(/\/ping/, (msg, match) => {
+            bot.sendMessage(msg.chat.id, 'Pong!')
+        })
     }
 }
 

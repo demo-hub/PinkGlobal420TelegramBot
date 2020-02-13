@@ -1,3 +1,20 @@
+## [4.0.0] - 13/02/2020
+
+### Added
+
+- Command to test bot availability '/ping' to which it replies with 'Pong!' (kaidey)
+- Message on the use of the keyword 'depressao' (kaidey)
+- '/help' command to give a list of all the commands available
+- '/globe' command to give a Google Maps view of a city
+
+### Changed
+
+- Refactoring of all the code to use Typescript (kaidey)
+- The 4:20 notification has an image of the city
+- The 4:20 notification now has the country of the city
+
+Thank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey
+
 ## [3.0.0] - 12/02/2020
 
 ### Added
