@@ -29,7 +29,19 @@ server.listen(process.env.PORT || 5000, () => {
 
     bot.on("message", (msg) => {
 
-        handleCommand(msg);
+        var checkMention = new RegExp('^@');
+        var checkCommand = new RegExp('^/')
+
+
+        if (checkMention.test(msg.text)) {
+
+            handleMentions(msg);
+
+        } else if (checkCommand.test(msg.text)) {
+
+            handleCommand(msg);
+
+        } 
 
     })
 
@@ -40,6 +52,15 @@ server.listen(process.env.PORT || 5000, () => {
     //commands.ping(bot)
 
 });
+
+function handleMentions(msg: any) {
+
+    var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
+
+    if (checkBotMention.test(msg.text)) {
+        bot.sendMessage(msg.chat.id, "Fazeçe irmão");
+    }
+}
 
 async function handleCommand(msg: any) {
 

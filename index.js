@@ -55,12 +55,25 @@ server.listen(process.env.PORT || 5000, function () {
     //bot.sendMessage(chat_id = process.env.CHAT_ID, text = 'Updated to version 3.0.0\nAdded:\n- Message on mention\n- /next command to give how much time is left to the next 4:20 or to the next 4:20 in a specific city\nChanged:\n- Refactoring of the code in multiple files\n- Added Riga as a main city in UTC+2\n- Message of UTC+2\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot')
     notification.timeNotification(bot);
     bot.on("message", function (msg) {
-        handleCommand(msg);
+        var checkMention = new RegExp('^@');
+        var checkCommand = new RegExp('^/');
+        if (checkMention.test(msg.text)) {
+            handleMentions(msg);
+        }
+        else if (checkCommand.test(msg.text)) {
+            handleCommand(msg);
+        }
     });
     //commands.mentions(bot)
     //commands.next(bot)
     //commands.ping(bot)
 });
+function handleMentions(msg) {
+    var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
+    if (checkBotMention.test(msg.text)) {
+        bot.sendMessage(msg.chat.id, "Fazeçe irmão");
+    }
+}
 function handleCommand(msg) {
     return __awaiter(this, void 0, void 0, function () {
         var command, args, _i, commands_1, commandType, exception_1;
