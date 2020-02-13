@@ -63,6 +63,9 @@ server.listen(process.env.PORT || 5000, function () {
         else if (checkCommand.test(msg.text)) {
             handleCommand(msg);
         }
+        else {
+            handleUserMessages(msg);
+        }
     });
     //commands.mentions(bot)
     //commands.next(bot)
@@ -72,6 +75,13 @@ function handleMentions(msg) {
     var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
     if (checkBotMention.test(msg.text)) {
         bot.sendMessage(msg.chat.id, "Fazeçe irmão");
+    }
+}
+function handleUserMessages(msg) {
+    //This is a temporary solution
+    var checkDepression = new RegExp(/(.?)(deprimido|depressão|depressao|deprimir|deprimo)(.?)/);
+    if (checkDepression.test(msg.text)) {
+        bot.sendMessage(msg.chat.id, "Eu tenho a solução para a tua depressão. Deposita o teu salário na minha congragação.");
     }
 }
 function handleCommand(msg) {

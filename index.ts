@@ -41,7 +41,10 @@ server.listen(process.env.PORT || 5000, () => {
 
             handleCommand(msg);
 
-        } 
+        } else {
+
+            handleUserMessages(msg);
+        }
 
     })
 
@@ -60,6 +63,17 @@ function handleMentions(msg: any) {
     if (checkBotMention.test(msg.text)) {
         bot.sendMessage(msg.chat.id, "Fazeçe irmão");
     }
+}
+
+function handleUserMessages(msg: any) {
+
+    //This is a temporary solution
+    var checkDepression = new RegExp(/(.?)(deprimido|depressão|depressao|deprimir|deprimo)(.?)/);
+
+    if (checkDepression.test(msg.text)) {
+        bot.sendMessage(msg.chat.id, "Eu tenho a solução para a tua depressão. Deposita o teu salário na minha congragação.");
+    }
+
 }
 
 async function handleCommand(msg: any) {
