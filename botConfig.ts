@@ -1,5 +1,6 @@
 export let config = {
     "commands": [
-        "cities"
+        "cities",
+        "next"
     ]
 }   

@@ -19,96 +19,95 @@ export default class Cities implements BotCommand {
         return this._command === command;
     }
 
-    async runCommand(args: string[], bot: any, msg: any){
+    async runCommand(args: string[], bot: any, msg: any) {
 
-        bot.onText(/\/cities(.?)/, (msg, match) => {
-            const timezone = match.input.replace('/cities', '').trim()
-            if (timezone) {
-                this.mainCities(bot, msg.chat.id, timezone)
-            } else {
-                bot.sendMessage(msg.chat.id, 'What timezone?', {
-                    reply_markup: {
-                        inline_keyboard: [
-                            [{
-                                text: 'UTC',
-                                callback_data: 'UTC'
-                            }],
-                            [{
-                                text: 'UTC+1',
-                                callback_data: 'UTC+1'
-                            }],
-                            [{
-                                text: 'UTC+2',
-                                callback_data: 'UTC+2'
-                            }],
-                            [{
-                                text: 'UTC+3',
-                                callback_data: 'UTC+3'
-                            }],
-                            [{
-                                text: 'UTC+4',
-                                callback_data: 'UTC+4'
-                            }],
-                            [{
-                                text: 'UTC+5',
-                                callback_data: 'UTC+5'
-                            }],
-                            [{
-                                text: 'UTC+6',
-                                callback_data: 'UTC+6'
-                            }],
-                            [{
-                                text: 'UTC+7',
-                                callback_data: 'UTC+7'
-                            }],
-                            [{
-                                text: 'UTC+8',
-                                callback_data: 'UTC+8'
-                            }],
-                            [{
-                                text: 'UTC+9',
-                                callback_data: 'UTC+9'
-                            }],
-                            [{
-                                text: 'UTC+10',
-                                callback_data: 'UTC+10'
-                            }],
-                            [{
-                                text: 'UTC+11',
-                                callback_data: 'UTC+11'
-                            }],
-                            [{
-                                text: 'UTC+12',
-                                callback_data: 'UTC+12'
-                            }],
-                            [{
-                                text: 'UTC+13',
-                                callback_data: 'UTC+13'
-                            }],
-                            [{
-                                text: 'UTC+14',
-                                callback_data: 'UTC+14'
-                            }],
-                            [{
-                                text: 'UTC+15',
-                                callback_data: 'UTC+15'
-                            }],
-                            [{
-                                text: 'UTC+16',
-                                callback_data: 'UTC+16'
-                            }]
-                        ]
-                    }
-                })
+        const timezone = msg.text.replace('/cities', '').trim()
+        if (timezone) {
+            this.mainCities(bot, msg.chat.id, timezone)
+        } else {
+            bot.sendMessage(msg.chat.id, 'What timezone?', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{
+                            text: 'UTC',
+                            callback_data: 'UTC'
+                        }],
+                        [{
+                            text: 'UTC+1',
+                            callback_data: 'UTC+1'
+                        }],
+                        [{
+                            text: 'UTC+2',
+                            callback_data: 'UTC+2'
+                        }],
+                        [{
+                            text: 'UTC+3',
+                            callback_data: 'UTC+3'
+                        }],
+                        [{
+                            text: 'UTC+4',
+                            callback_data: 'UTC+4'
+                        }],
+                        [{
+                            text: 'UTC+5',
+                            callback_data: 'UTC+5'
+                        }],
+                        [{
+                            text: 'UTC+6',
+                            callback_data: 'UTC+6'
+                        }],
+                        [{
+                            text: 'UTC+7',
+                            callback_data: 'UTC+7'
+                        }],
+                        [{
+                            text: 'UTC+8',
+                            callback_data: 'UTC+8'
+                        }],
+                        [{
+                            text: 'UTC+9',
+                            callback_data: 'UTC+9'
+                        }],
+                        [{
+                            text: 'UTC+10',
+                            callback_data: 'UTC+10'
+                        }],
+                        [{
+                            text: 'UTC+11',
+                            callback_data: 'UTC+11'
+                        }],
+                        [{
+                            text: 'UTC+12',
+                            callback_data: 'UTC+12'
+                        }],
+                        [{
+                            text: 'UTC+13',
+                            callback_data: 'UTC+13'
+                        }],
+                        [{
+                            text: 'UTC+14',
+                            callback_data: 'UTC+14'
+                        }],
+                        [{
+                            text: 'UTC+15',
+                            callback_data: 'UTC+15'
+                        }],
+                        [{
+                            text: 'UTC+16',
+                            callback_data: 'UTC+16'
+                        }]
+                    ]
+                }
+            })
 
-                bot.on('callback_query', (callbackQuery) => {
-                    this.mainCities(bot, callbackQuery.message.chat.id, callbackQuery.data)
-                })
-            }
-        })
+            bot.on('callback_query', (callbackQuery) => {
+                this.mainCities(bot, callbackQuery.message.chat.id, callbackQuery.data)
+            })
+        }
+
     }
 
-    mainCities(bot: Telegram.Bot, chatId: string, timezone: string) {
+    mainCities(bot: any, chatId: string, timezone: string) {
 
         switch (timezone) {
             case 'UTC':
@@ -166,6 +165,6 @@ export default class Cities implements BotCommand {
                 bot.sendMessage(chatId, 'Invalid timezone or timezone not supported yet')
                 break;
         }
-}
+    }
 
 }
