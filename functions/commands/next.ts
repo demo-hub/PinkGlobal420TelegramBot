@@ -21,39 +21,38 @@ export default class Next implements BotCommand {
 
     async runCommand(args: string[], bot: any, msg: any) {
 
-        bot.onText(/\/next/, (msg, match) => {
-            var currentDate = new Date();
+        var currentDate = new Date();
 
-            var alarmHour = parseInt(process.env.ALARM_HOUR);
+        var alarmHour = parseInt(process.env.ALARM_HOUR);
 
-            var alarmMinute = parseInt(process.env.ALARM_MINUTE);
+        var alarmMinute = parseInt(process.env.ALARM_MINUTE);
 
-            var hourUTC = currentDate.getUTCHours();
+        var hourUTC = currentDate.getUTCHours();
 
-            var minutesUTC = currentDate.getUTCMinutes();
+        var minutesUTC = currentDate.getUTCMinutes();
 
-            let timeoffset = 0,
-                minutesLeft = 0
+        let timeoffset = 0,
+            minutesLeft = 0
 
-            if (alarmHour < hourUTC) {
-                timeoffset = 24 - (hourUTC - alarmHour)
-            } else if (alarmHour > hourUTC) {
-                timeoffset = hourUTC - alarmHour
-            }
+        if (alarmHour < hourUTC) {
+            timeoffset = 24 - (hourUTC - alarmHour)
+        } else if (alarmHour > hourUTC) {
+            timeoffset = hourUTC - alarmHour
+        }
 
-            if (minutesUTC < alarmMinute) {
-                minutesLeft = parseInt(process.env.ALARM_MINUTE) - minutesUTC
-            } else {
-                minutesLeft = (60 - minutesUTC) + parseInt(process.env.ALARM_MINUTE)
-                timeoffset++
-            }
+        if (minutesUTC < alarmMinute) {
+            minutesLeft = parseInt(process.env.ALARM_MINUTE) - minutesUTC
+        } else {
+            minutesLeft = (60 - minutesUTC) + parseInt(process.env.ALARM_MINUTE)
+            timeoffset++
+        }
 
-            if (timeoffset > 16) {
-                minutesLeft = 60 * (24 - timeoffset) - minutesLeft + parseInt(process.env.ALARM_MINUTE)
-            }
+        if (timeoffset > 16) {
+            minutesLeft = 60 * (24 - timeoffset) - minutesLeft + parseInt(process.env.ALARM_MINUTE)
+        }
 
-            this.nextCity(bot, msg.chat.id, timeoffset, minutesLeft)
-        })
+        this.nextCity(bot, msg.chat.id, timeoffset, minutesLeft)
+
 
     }
 
