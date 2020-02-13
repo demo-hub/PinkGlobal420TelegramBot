@@ -5,77 +5,79 @@ module.exports = {
         setInterval(function() {
             var currentDate = new Date();
 
+            var alarmHour = parseInt(process.env.ALARM_HOUR)
+
             var hourUTC = currentDate.getUTCHours();
 
             var minutesUTC = currentDate.getUTCMinutes();
 
-            if (minutesUTC == process.env.ALARM_MINUTE) {
-                switch (parseInt(hourUTC)) {
+            if (minutesUTC == parseInt(process.env.ALARM_MINUTE)) {
+                switch (hourUTC) {
                     case parseInt(process.env.ALARM_HOUR):
                         sendMessageToChannel(bot, 'UTC');
                         break;
-                    case process.env.ALARM_HOUR < 1 ? 24 + (process.env.ALARM_HOUR - 1):
-                        process.env.ALARM_HOUR - 1:
+                    case alarmHour < 1 ? 24 + (alarmHour - 1) :
+                        alarmHour - 1:
                             sendMessageToChannel(bot, 'UTC+1');
                         break;
-                    case process.env.ALARM_HOUR < 2 ? 24 + (process.env.ALARM_HOUR - 2):
-                        process.env.ALARM_HOUR - 2:
+                    case alarmHour < 2 ? 24 + (alarmHour - 2):
+                        alarmHour - 2:
                             sendMessageToChannel(bot, 'UTC+2');
                         break;
-                    case process.env.ALARM_HOUR < 3 ? 24 + (process.env.ALARM_HOUR - 3):
-                        process.env.ALARM_HOUR - 3:
+                    case alarmHour < 3 ? 24 + (alarmHour - 3):
+                        alarmHour - 3:
                             sendMessageToChannel(bot, 'UTC+3');
                         break;
-                    case process.env.ALARM_HOUR < 4 ? 24 + (process.env.ALARM_HOUR - 4):
-                        process.env.ALARM_HOUR - 4:
+                    case alarmHour < 4 ? 24 + (alarmHour - 4):
+                        alarmHour - 4:
                             sendMessageToChannel(bot, 'UTC+4');
                         break;
-                    case process.env.ALARM_HOUR < 5 ? 24 + (process.env.ALARM_HOUR - 5):
-                        process.env.ALARM_HOUR - 5:
+                    case alarmHour < 5 ? 24 + (alarmHour - 5):
+                        alarmHour - 5:
                             sendMessageToChannel(bot, 'UTC+5');
                         break;
-                    case process.env.ALARM_HOUR < 6 ? 24 + (process.env.ALARM_HOUR - 6):
-                        process.env.ALARM_HOUR - 6:
+                    case alarmHour < 6 ? 24 + (alarmHour - 6):
+                        alarmHour - 6:
                             sendMessageToChannel(bot, 'UTC+6');
                         break;
-                    case process.env.ALARM_HOUR < 7 ? 24 + (process.env.ALARM_HOUR - 7):
-                        process.env.ALARM_HOUR - 7:
+                    case alarmHour < 7 ? 24 + (alarmHour - 7):
+                        alarmHour - 7:
                             sendMessageToChannel(bot, 'UTC+7');
                         break;
-                    case process.env.ALARM_HOUR < 8 ? 24 + (process.env.ALARM_HOUR - 8):
-                        process.env.ALARM_HOUR - 8:
+                    case alarmHour < 8 ? 24 + (alarmHour - 8):
+                        alarmHour - 8:
                             sendMessageToChannel(bot, 'UTC+8');
                         break;
-                    case process.env.ALARM_HOUR < 9 ? 24 + (process.env.ALARM_HOUR - 9):
-                        process.env.ALARM_HOUR - 9:
+                    case alarmHour < 9 ? 24 + (alarmHour - 9):
+                        alarmHour - 9:
                             sendMessageToChannel(bot, 'UTC+9');
                         break;
-                    case process.env.ALARM_HOUR < 10 ? 24 + (process.env.ALARM_HOUR - 10):
-                        process.env.ALARM_HOUR - 10:
+                    case alarmHour < 10 ? 24 + (alarmHour - 10):
+                        alarmHour - 10:
                             sendMessageToChannel(bot, 'UTC+10');
                         break;
-                    case process.env.ALARM_HOUR < 11 ? 24 + (process.env.ALARM_HOUR - 11):
-                        process.env.ALARM_HOUR - 11:
+                    case alarmHour < 11 ? 24 + (alarmHour - 11):
+                        alarmHour - 11:
                             sendMessageToChannel(bot, 'UTC+11');
                         break;
-                    case process.env.ALARM_HOUR < 12 ? 24 + (process.env.ALARM_HOUR - 12):
-                        process.env.ALARM_HOUR - 12:
+                    case alarmHour < 12 ? 24 + (alarmHour - 12):
+                        alarmHour - 12:
                             sendMessageToChannel(bot, 'UTC+12');
                         break;
-                    case process.env.ALARM_HOUR < 13 ? 24 + (process.env.ALARM_HOUR - 13):
-                        process.env.ALARM_HOUR - 13:
+                    case alarmHour < 13 ? 24 + (alarmHour - 13):
+                        alarmHour - 13:
                             sendMessageToChannel(bot, 'UTC+13');
                         break;
-                    case process.env.ALARM_HOUR < 14 ? 24 + (process.env.ALARM_HOUR - 14):
-                        process.env.ALARM_HOUR - 14:
+                    case alarmHour < 14 ? 24 + (alarmHour - 14):
+                        alarmHour - 14:
                             sendMessageToChannel(bot, 'UTC+14');
                         break;
-                    case process.env.ALARM_HOUR < 15 ? 24 + (process.env.ALARM_HOUR - 15):
-                        process.env.ALARM_HOUR - 15:
+                    case alarmHour < 15 ? 24 + (alarmHour - 15):
+                        alarmHour - 15:
                             sendMessageToChannel(bot, 'UTC+15');
                         break;
-                    case process.env.ALARM_HOUR < 16 ? 24 + (process.env.ALARM_HOUR - 16):
-                        process.env.ALARM_HOUR - 16:
+                    case alarmHour < 16 ? 24 + (alarmHour - 16):
+                        alarmHour - 16:
                             sendMessageToChannel(bot, 'UTC+16');
                         break;
                 }
@@ -142,6 +144,6 @@ function sendMessageToChannel(bot, timezone) {
             break;
     }
 
-    bot.sendMessage(chat_id = process.env.CHAT_ID, text = message)
+    bot.sendMessage( process.env.CHAT_ID, message)
 
 }
