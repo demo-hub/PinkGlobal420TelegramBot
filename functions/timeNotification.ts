@@ -5,7 +5,6 @@ export default class TimeNotification {
     constructor() { }
 
     timeNotification(bot: any) {
-        this.sendMessageToChannel(bot, 'UTC')
         setInterval(function() {
             var currentDate = new Date();
 
