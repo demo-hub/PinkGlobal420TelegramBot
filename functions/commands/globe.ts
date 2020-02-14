@@ -10,7 +10,7 @@ export default class Globe implements BotCommand {
     }
 
     help(): string {
-        return ('- /globe {location}: Use this command to have a Google Maps view of a location. The location can be a city or a country')
+        return ('- /globe {location} {zoom}: Use this command to have a Google Maps view of a location. The location can be a city, a country or a place. The recomended zoom for cities or contries is 11. For a place we recommend 17.')
     }
 
     isCommand(command: string): boolean {
@@ -23,7 +23,26 @@ export default class Globe implements BotCommand {
             return
         }
 
-        bot.sendPhoto(msg.chat.id, `http://maps.googleapis.com/maps/api/staticmap?center=${args[0]}&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`)
+        if (args.length < 2) {
+            bot.sendMessage(msg.chat.id, 'You have to provide a location or the zoom')
+            return
+        }
+
+        if (isNaN(parseInt(args[args.length - 1])) || parseInt(args[args.length - 1]) < 0) {
+            bot.sendMessage(msg.chat.id, 'Zoom invalid')
+            return;
+        }
+
+        let center = ''
+
+        args.forEach((arg, index) => {
+            if (index != args.length - 1) {
+                center += arg.replace(/ /g, '+')
+            }
+        });
+        //args[1] = args[1].replace(/ /g, '+')
+
+        bot.sendPhoto(msg.chat.id, `http://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${args[args.length - 1]}&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`)
     }
 
 }

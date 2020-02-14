@@ -1,3 +1,13 @@
+## [4.2.0] - 
+
+### Added
+
+- 'zoom' parameter in /globe command
+
+### Changed
+
+- It is possible to use the /globe command with spaces
+
 ## [4.1.5] - 14/02/2020
 
 ### Fixed
