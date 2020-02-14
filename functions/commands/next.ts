@@ -34,20 +34,20 @@ export default class Next implements BotCommand {
             minutesLeft = 0
 
         if (alarmHour < hourUTC) {
-            timeoffset = 24 - (hourUTC - alarmHour)
+            timeoffset = 24 + alarmHour - hourUTC
         } else if (alarmHour > hourUTC) {
-            timeoffset = hourUTC - alarmHour
+            timeoffset = alarmHour - hourUTC
         }
 
         if (minutesUTC < alarmMinute) {
             minutesLeft = parseInt(process.env.ALARM_MINUTE) - minutesUTC
         } else {
             minutesLeft = (60 - minutesUTC) + parseInt(process.env.ALARM_MINUTE)
-            timeoffset++
+            timeoffset--
         }
 
         if (timeoffset > 16) {
-            minutesLeft = 60 * (24 - timeoffset) - minutesLeft + parseInt(process.env.ALARM_MINUTE)
+            minutesLeft = (60 * (timeoffset - 16)) + minutesLeft
         }
 
         this.nextCity(bot, msg.chat.id, timeoffset, minutesLeft)

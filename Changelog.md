@@ -1,3 +1,10 @@
+## [4.1.5] - 14/02/2020
+
+### Fixed
+
+- Notification on 4:20
+- /next command
+
 ## [4.1.0] - 13/02/2020
 
 ### Fixed
