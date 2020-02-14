@@ -52,7 +52,7 @@ var commands = [];
 loadCommands(__dirname + "/functions/commands");
 server.listen(process.env.PORT || 5000, function () {
     console.log("Server running");
-    bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.1.0\nFixed: - Google Maps photos\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!');
+    // bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.1.0\nFixed: - Google Maps photos\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions to this version! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!')
     new timeNotification_1["default"]().timeNotification(bot);
     bot.on("message", function (msg) {
         var checkMention = new RegExp('^@');

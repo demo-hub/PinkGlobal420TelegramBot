@@ -5,6 +5,7 @@ export default class TimeNotification {
     constructor() { }
 
     timeNotification(bot: any) {
+        this.sendMessageToChannel(bot, 'UTC')
         setInterval(function() {
             var currentDate = new Date();
 
@@ -90,7 +91,6 @@ export default class TimeNotification {
 
     sendMessageToChannel(bot: any, timezone: string) {
         var message = "", photo = "";
-        console.log('ok')
 
         switch (timezone) {
             case 'UTC':
