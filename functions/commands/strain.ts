@@ -32,19 +32,24 @@ export default class Strain implements BotCommand {
         const botOutput = async () => {
           const strain = await getRandomStrain();
           var randomItem = Math.floor(Math.random() * 9);
-          var option = {
-            "parse_mode": "Markdown",
-          };
+
 
           if (strain.data) {
-            var outputString = "*Strain Name:* " + strain.data.data[randomItem].name + "\n";
+            var outputString = "*Strain Name:* " + strain.data.data[randomItem].name;
 
             if(strain.data.data[randomItem].image == "http://www.cannabisreports.com/images/strains/no_image.png"){
-              outputString += "_Sorry, we don't have an image for this strain in our database_";
+              var option = {
+                "parse_mode": "Markdown",
+              };
+              
+              outputString = "_Sorry, we don't have an image for this strain in our database_\n" + outputString;
               bot.sendMessage(msg.chat.id, outputString, option);
             } else {
-              bot.sendMessage(msg.chat.id, outputString, option);
-              bot.sendPhoto(msg.chat.id, strain.data.data[randomItem].image);
+              var optionPhoto = {
+                "caption": outputString,
+                "parse_mode": "Markdown",
+              };
+              bot.sendPhoto(msg.chat.id, strain.data.data[randomItem].image, optionPhoto);
             }
           }
         }
