@@ -71,6 +71,15 @@ async function handleMentions(msg: any) {
     })
 
     if (checkBotMention.test(msg.text)) {
+
+        if (customNick == null) {
+            if (msg.from.username == undefined) {
+                customNick = msg.from.first_name
+            } else {
+                customNick = '@' + msg.from.username
+            }
+        }
+
         var mention = `[${customNick}](tg://user?id=${msg.from.id})`
         bot.sendMessage(msg.chat.id, `Hi ${mention} `, { parse_mode: 'MarkdownV2' });
         bot.sendMessage(msg.chat.id, "Fazeçe irmão");

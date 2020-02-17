@@ -90,6 +90,14 @@ function handleMentions(msg) {
                 case 1:
                     customNick = _a.sent();
                     if (checkBotMention.test(msg.text)) {
+                        if (customNick == null) {
+                            if (msg.from.username == undefined) {
+                                customNick = msg.from.first_name;
+                            }
+                            else {
+                                customNick = '@' + msg.from.username;
+                            }
+                        }
                         mention = "[" + customNick + "](tg://user?id=" + msg.from.id + ")";
                         bot.sendMessage(msg.chat.id, "Hi " + mention + " ", { parse_mode: 'MarkdownV2' });
                         bot.sendMessage(msg.chat.id, "Fazeçe irmão");
