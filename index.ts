@@ -67,7 +67,7 @@ async function handleMentions(msg: any) {
     const connector = mongoose.connect(botConfig.connectionString, { useNewUrlParser: true })
 
     let customNick = await connector.then(async () => {
-        return nicknameCRUD.GetNickname('875242246')
+        return nicknameCRUD.GetNickname(msg.from.id)
     })
 
     if (checkBotMention.test(msg.text)) {

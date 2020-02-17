@@ -84,7 +84,7 @@ function handleMentions(msg) {
                     connector = mongoose.connect(botConfig.connectionString, { useNewUrlParser: true });
                     return [4 /*yield*/, connector.then(function () { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
-                                return [2 /*return*/, nicknameCRUD.GetNickname('875242246')];
+                                return [2 /*return*/, nicknameCRUD.GetNickname(msg.from.id)];
                             });
                         }); })];
                 case 1:

@@ -13,7 +13,7 @@ export default class Nickname implements BotCommand {
     }
 
     help(): string {
-        return ('- /nickname {nickname}/clear: Use this command to set a custom nickname that the bot will use when mentioning you!')
+        return ('- /nickname {nickname}/clear: Use this command to set a custom nickname/clear your custom nickname that the bot will use when mentioning you!')
     }
 
     isCommand(command: string): boolean {

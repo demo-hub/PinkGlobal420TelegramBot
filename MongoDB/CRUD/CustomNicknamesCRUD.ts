@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose'
-import * as botConfig from '../../botConfig'
 
 const customNicknamesSchema = require('../Schemas/CustomNicknamesSchema')
 const CustomNickname = mongoose.model('customNickname', customNicknamesSchema, 'customNickname')
