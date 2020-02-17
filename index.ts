@@ -18,6 +18,8 @@ const server = http.createServer((req, res) => {
     res.end('Hello World');
 });
 
+import * as nicknameCRUD from "./MongoDB/CRUD/CustomNicknamesCRUD"
+
 let commands: BotCommand[] = [];
 
 loadCommands(`${__dirname}/functions/commands`);
@@ -58,11 +60,19 @@ server.listen(process.env.PORT || 5000, () => {
 
 });
 
-function handleMentions(msg: any) {
+async function handleMentions(msg: any) {
 
     var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
 
+    const connector = mongoose.connect(botConfig.connectionString, { useNewUrlParser: true })
+
+    let customNick = await connector.then(async () => {
+        return nicknameCRUD.GetNickname('875242246')
+    })
+
     if (checkBotMention.test(msg.text)) {
+        var mention = `[${customNick}](tg://user?id=${msg.from.id})`
+        bot.sendMessage(msg.chat.id, `Hi ${mention} `, { parse_mode: 'MarkdownV2' });
         bot.sendMessage(msg.chat.id, "Fazeçe irmão");
     }
 }
