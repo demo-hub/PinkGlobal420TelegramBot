@@ -24,9 +24,19 @@ export default class Nickname implements BotCommand {
 
         const connector = mongoose.connect(botConfig.connectionString, { useNewUrlParser: true })
 
+        const mentionUser =  this.userMentionMethod(msg)
+
         if (args[0] == 'clear') {
 
-            this.clearCustomNickname(msg,bot)
+            await nicknameCRUD.DeleteEntry(msg.from.id).then(() => {
+
+                if (mentionUser[1] == null) {
+                    bot.sendMessage(process.env.CHAT_ID, `@${mentionUser[0]} your nickname has been cleared`)
+                } else {
+                    bot.sendMessage(process.env.CHAT_ID, `${mentionUser[0]} your nickname has been cleared`, mentionUser[1])
+                }
+                
+            })
 
             return
         }
@@ -37,23 +47,29 @@ export default class Nickname implements BotCommand {
             newNickname += arg + ' '
         })
 
-        var username = msg.from.username === undefined ? '' : msg.from.username
-
         await connector.then(async () => {
 
-            await nicknameCRUD.GetNickname(msg.from.id).then((result) => {
+            await nicknameCRUD.GetNickname(msg.from.id).then(async (result) => {
 
                 if (result === undefined) {
 
-                    this.createCustomNicknameEntry(msg, bot, username, newNickname)
+                    await nicknameCRUD.CreateCustomNickname(msg.from.id, newNickname).then(result => {
+
+                        if (mentionUser[1] == null) {
+                            bot.sendMessage(process.env.CHAT_ID, `Alright @${mentionUser[0]} I'll call you ${newNickname} from now on `)
+                        } else {
+                            bot.sendMessage(process.env.CHAT_ID, `Alright ${mentionUser[0]} I'll call you ${newNickname} from now on `, mentionUser[1])
+                        }
+
+                    })
 
                 } else {
 
-                    if (result == null) {
-                        result = this.userMentionMethod(msg, bot)
-                    }
+                    await nicknameCRUD.UpdateNickname(msg.from.id, newNickname).then(() => {
 
-                    this.updateCustomNickname(msg, bot, result, newNickname)
+                        bot.sendMessage(process.env.CHAT_ID, `@${result} your nickname has been update to ${newNickname}`)
+
+                    })
                 }
 
             })
@@ -61,48 +77,15 @@ export default class Nickname implements BotCommand {
 
     }
 
-    userMentionMethod(msg, bot) {
+    userMentionMethod(msg) {
 
         if (msg.from.username === undefined) {
-            return `[${msg.from.first_name}](tg://user?id=${msg.from.id})`
+
+            return [`[${msg.from.first_name}](tg://user?id=${msg.from.id})`, { parse_mode: 'MarkdownV2' }]
+        
         } else {
-            return msg.from.username
+            return [msg.from.username, null]
         }
-    }
-
-    async clearCustomNickname(msg: any, bot: any) {
-
-        await nicknameCRUD.UpdateNickname(msg.from.id, null).then(result => {
-            if (msg.from.username == undefined) {
-                bot.sendMessage(process.env.CHAT_ID, `[${msg.from.first_name}](tg://user?id=${msg.from.id}) Your custom nickname has been cleared`, { parse_mode: 'MarkdownV2' })
-            } else {
-                bot.sendMessage(process.env.CHAT_ID, `@${msg.from.username} Your custom nickname has been cleared!`)
-            }
-
-        })
-    }
-
-    async createCustomNicknameEntry(msg: any, bot: any, username: string, newNickname: string) {
-
-        await nicknameCRUD.CreateCustomNickname(msg.from.id, msg.from.first_name, username, newNickname).then(result => {
-
-            if (msg.from.username === undefined) {
-                bot.sendMessage(process.env.CHAT_ID, `Alright [${msg.from.first_name}](tg://user?id=${msg.from.id})  I'll call you ${newNickname} from now on `, { parse_mode: 'MarkdownV2' })
-            } else {
-                bot.sendMessage(process.env.CHAT_ID, `Alright ${msg.from.username} I'll call you ${newNickname} from now on `)
-            }
-
-        })
-    }
-
-    async updateCustomNickname(msg: any, bot: any, result: string, newNickname: string) {
-
-        await nicknameCRUD.UpdateNickname(msg.from.id, newNickname).then(() => {
-
-            (msg.from.username === undefined) ? bot.sendMessage(process.env.CHAT_ID, `[${result}](tg://user?id=${msg.from.id}) your custom nickname has been updated to ${newNickname}`, { parse_mode: 'MarkdownV2' })
-                : bot.sendMessage(process.env.CHAT_ID, `${result} your custom nickname has been updated to ${newNickname}`)
-
-        })
     }
 
 }
