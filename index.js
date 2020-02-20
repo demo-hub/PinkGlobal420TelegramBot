@@ -35,19 +35,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var timeNotification_1 = require("./functions/timeNotification");
-require('dotenv').config();
-var http = require('http');
-var mongoose = require('mongoose');
-var TelegramBot = require('node-telegram-bot-api');
+require("dotenv").config();
+var http = require("http");
+var mongoose = require("mongoose");
+var TelegramBot = require("node-telegram-bot-api");
 var botConfig = require("./botConfig");
 var token = process.env.TOKEN;
 var bot = new TelegramBot(token, { polling: true });
 var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Hello World");
 });
 var nicknameCRUD = require("./MongoDB/CRUD/CustomNicknamesCRUD");
 var commands = [];
@@ -55,10 +55,10 @@ loadCommands(__dirname + "/functions/commands");
 server.listen(process.env.PORT || 5000, function () {
     console.log("Server running");
     //bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.1.5\nFixed:\n - Notification on 4:20\n- /next command\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!\n\nBrace yourselves the next version is gonna be the version 4.2.0! Big things are coming!')
-    new timeNotification_1.default().timeNotification(bot);
+    new timeNotification_1["default"]().timeNotification(bot);
     bot.on("message", function (msg) {
-        var checkMention = new RegExp('^@');
-        var checkCommand = new RegExp('^/');
+        var checkMention = new RegExp("^@");
+        var checkCommand = new RegExp("^/");
         if (checkMention.test(msg.text)) {
             handleMentions(msg);
         }
@@ -81,7 +81,9 @@ function handleMentions(msg) {
             switch (_a.label) {
                 case 0:
                     checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
-                    connector = mongoose.connect(botConfig.connectionString, { useNewUrlParser: true });
+                    connector = mongoose.connect(botConfig.connectionString, {
+                        useNewUrlParser: true
+                    });
                     return [4 /*yield*/, connector.then(function () { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
                                 return [2 /*return*/, nicknameCRUD.GetNickname(msg.from.id)];
@@ -95,11 +97,13 @@ function handleMentions(msg) {
                                 customNick = msg.from.first_name;
                             }
                             else {
-                                customNick = '@' + msg.from.username;
+                                customNick = "@" + msg.from.username;
                             }
                         }
                         mention = "[" + customNick + "](tg://user?id=" + msg.from.id + ")";
-                        bot.sendMessage(msg.chat.id, "Hi " + mention + " ", { parse_mode: 'MarkdownV2' });
+                        bot.sendMessage(msg.chat.id, "Hi " + mention + " ", {
+                            parse_mode: "MarkdownV2"
+                        });
                         bot.sendMessage(msg.chat.id, "Fazeçe irmão");
                     }
                     return [2 /*return*/];
@@ -120,7 +124,7 @@ function handleCommand(msg) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    command = msg.text.split(" ")[0].replace('/', "");
+                    command = msg.text.split(" ")[0].replace("/", "");
                     args = msg.text.split(" ").slice(1);
                     _i = 0, commands_1 = commands;
                     _a.label = 1;
@@ -151,7 +155,8 @@ function handleCommand(msg) {
 }
 function loadCommands(commandsPath) {
     //If command list doesn't exist or is empty
-    if (!botConfig.config.commands || botConfig.config.commands.length === 0) {
+    if (!botConfig.config.commands ||
+        botConfig.config.commands.length === 0) {
         return;
     }
     for (var _i = 0, _a = botConfig.config.commands; _i < _a.length; _i++) {
@@ -159,4 +164,3 @@ function loadCommands(commandsPath) {
         commands.push(command);
     }
 }
-//# sourceMappingURL=index.js.map
