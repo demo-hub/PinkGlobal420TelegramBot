@@ -17,7 +17,7 @@ export async function CreateCustomNickname(
   }).save();
 }
 
-export async function GetNickname(userID: string) {
+export async function GetUserByID(userID: string) {
   var queryResult = await CustomNickname.findOne({ userID: userID }).then(
     nickname => {
       return nickname;
@@ -45,7 +45,7 @@ export async function DeleteEntry(userID: string) {
   await CustomNickname.deleteOne({ userID: userID });
 }
 
-export async function getUser(customNickname: string) {
+export async function getUserByNickname(customNickname: string) {
   var queryResult = await CustomNickname.findOne({
     customNickname: customNickname
   }).then(user => {

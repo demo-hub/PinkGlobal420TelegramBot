@@ -57,15 +57,13 @@ export default class Nickname implements BotCommand {
       return exists;
     });
 
-    console.log("result nicknameExists= " + nicknameExists);
-
     if (nicknameExists !== null) {
       bot.sendMessage(process.env.CHAT_ID, `That nickname already exists`);
       return;
     }
 
     await connector.then(async () => {
-      await nicknameCRUD.GetNickname(msg.from.id).then(async result => {
+      await nicknameCRUD.GetUserByID(msg.from.id).then(async result => {
         if (!result) {
           await nicknameCRUD
             .CreateCustomNickname(msg.from.id, newNickname.trim())
@@ -110,8 +108,7 @@ export default class Nickname implements BotCommand {
   }
 
   async checkNicknameExists(nickname: string) {
-    return await nicknameCRUD.getUser(nickname).then(user => {
-      console.log("result findOne= " + user);
+    return await nicknameCRUD.getUserByNickname(nickname).then(user => {
       return user;
     });
   }
