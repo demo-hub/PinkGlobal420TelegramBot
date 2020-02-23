@@ -1,5 +1,5 @@
 import { sendMessageToChannel, sendPhotoToChannel } from "./messages";
-import { Message } from 'node-telegram-bot-api'
+// import { Message } from 'node-telegram-bot-api'
 
 require('dotenv').config()
 
@@ -127,84 +127,5 @@ export default class TimeNotification {
             }
         }, 60000)
     }
-
-    /* sendMessageToChannel(bot: any, timezone: string) {
-        var message = "", photo = "";
-
-        switch (timezone) {
-            case 'UTC':
-                message = 'São 4:20 no Porto, Portugal! Faz eçe caralho!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Porto&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+1':
-                message = 'Són les 4:20 a Barcelona, Espanya! Blau-la!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Barcelona&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+2':
-                message = 'Tas ir 4:20 Rīgā, Latvijā! Iededzini to!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Riga&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+3':
-                message = '4:20 مساءً في دبي ، الإمارات العربية المتحدة! الحريق ذلك!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Dubai&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+4':
-                message = 'یہ اسلام آباد ، پاکستان میں 4:20 ہے! اسے جلائیں!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Islamabad&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+5':
-                message = 'ол Алматыда, 4: 20-да, Қазақстан! Қыздыр!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Almaty&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+6':
-                message = 'มันคือ 4:20 ในกรุงเทพประเทศไทย! Blaze It!'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Bangkok&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+7':
-                message = '香港时间是4:20！大火吧！'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Hong+Kong&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+8':
-                message = '東京、日本は4:20です！燃えろ！'
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Tokyo&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+9':
-                message = "It's 4:20 in Brisbane, Australia! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Brisbane&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+10':
-                message = "It's 4:20 in Melbourne, Australia! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Melbourne&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+11':
-                message = "It's 4:20 in Norfollk Island, Australia! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Norfolk+Island&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+12':
-                message = "It's 4:20 in Auckland, New Zealand! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Auckland&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+13':
-                message = "It's 4:20 in Kiribati, Kiribati! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Kiribati&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+14':
-                message = "It's 4:20 in Adak, Alaska! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Adak&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+15':
-                message = "It's 4:20 in Anchorage, Alaska! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Anchorage&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-            case 'UTC+16':
-                message = "It's 4:20 in Vancouver, Canada! Blaze it!"
-                photo = `http://maps.googleapis.com/maps/api/staticmap?center=Vancouver&zoom=11&size=600x300&maptype=roadmap&key=${process.env.MAPS_API_KEY}`
-                break;
-        }
-
-        bot.sendMessage(process.env.CHAT_ID, message)
-
-        bot.sendPhoto(process.env.CHAT_ID, photo)
-    } */
 
 }
