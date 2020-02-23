@@ -26,7 +26,8 @@ server.listen(process.env.PORT || 5000, () => {
     console.log(`Server running`);
 
     //bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.1.5\nFixed:\n - Notification on 4:20\n- /next command\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot\nThank you kaidey for your contributions! You can find him in https://github.com/Kaidey\nIf you want to help please go on Github and star and/or watch the project. Maybe we can appear on Trending!\n\nBrace yourselves the next version is gonna be the version 4.2.0! Big things are coming!')
-
+    //bot.sendMessage(process.env.CHAT_ID, 'Welcome to *insert group chat name se possivel*. Use /help to see all the commands (and functions?) I have to offer. Blaze it!')
+    
     new TimeNotification().timeNotification(bot);
 
     bot.on("message", (msg) => {
