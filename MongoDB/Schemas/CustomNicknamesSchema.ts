@@ -7,19 +7,9 @@ const nicknamesSchema = new mongoose.Schema({
         required: [true, 'UserID is required']
     },
 
-    userFirstName: {
-        type: String,
-        required: [true, 'User first name is required']
-    },
-
-    userNickname: {
-        type: String,
-        required: [false]
-    },
-
     customNickname: {
         type: String,
-        required: [false]
+        required: [true]
     }
 
 })
