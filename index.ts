@@ -2,6 +2,8 @@ import TimeNotification from './functions/timeNotification'
 require('dotenv').config()
 const http = require('http');
 
+const mongoose = require('mongoose')
+
 const TelegramBot = require('node-telegram-bot-api');
 
 import { BotCommand } from './commandAPI'
