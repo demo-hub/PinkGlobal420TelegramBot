@@ -24,7 +24,7 @@ export default class Globe implements BotCommand {
         }
 
         if (args.length < 2) {
-            bot.sendMessage(msg.chat.id, 'You have to provide a location or the zoom')
+            bot.sendMessage(msg.chat.id, 'You have to provide a location and the zoom')
             return
         }
 

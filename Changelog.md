@@ -4,6 +4,11 @@
 
 - When a time notification is ready, the google maps photo is sent and the notification message is attached as the photo's caption, instead of sending 2 separate messages
 - 'zoom' parameter in /globe command
+- /strain command to give a random strain
+- Timezone to time notification
+- Wikipedia page of the city in time notification
+- MongoDB integration
+- /next command gives the city and country
 
 ### Fixed
 

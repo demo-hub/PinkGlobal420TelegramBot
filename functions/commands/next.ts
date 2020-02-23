@@ -59,13 +59,13 @@ export default class Next implements BotCommand {
 
         switch (timeOffset) {
             case 0:
-                bot.sendMessage(chatId, `As próximas 4:20 são no Porto! Faltam ${minutesLeft} minutos`)
+                bot.sendMessage(chatId, `As próximas 4:20 são no Porto, Portugal! Faltam ${minutesLeft} minutos`)
                 break;
             case 1:
-                bot.sendMessage(chatId, `Les properes 4:20 són a Barcelona! Resten ${minutesLeft} minuts`)
+                bot.sendMessage(chatId, `Les properes 4:20 són a Barcelona, Espanya! Resten ${minutesLeft} minuts`)
                 break;
             case 2:
-                bot.sendMessage(chatId, `Nākamie 4:20 nav pat Rīga! ${minutesLeft} minūtes jāiet`)
+                bot.sendMessage(chatId, `Nākamie 4:20 nav pat Rīga, Latvijā! ${minutesLeft} minūtes jāiet`)
                 break;
             case 3:
                 bot.sendMessage(chatId, `4:20 القادمة في دبي! ${minutesLeft} دقيقة للذهاب`)
@@ -74,7 +74,7 @@ export default class Next implements BotCommand {
                 bot.sendMessage(chatId, `اگلا 4:20 اسلام آباد میں ہے! ${minutesLeft} منٹ جانا ہے`)
                 break;
             case 5:
-                bot.sendMessage(chatId, `Келесі 4:20 - Алматыда! ${minutesLeft} минут жүру керек`)
+                bot.sendMessage(chatId, `Келесі 4:20 - Алматыда, Қазақстан! ${minutesLeft} минут жүру керек`)
                 break;
             case 6:
                 bot.sendMessage(chatId, `4:20 ถัดไปอยู่ในกรุงเทพ! ไป ${minutesLeft} นาที`)
@@ -86,31 +86,31 @@ export default class Next implements BotCommand {
                 bot.sendMessage(chatId, `次の4:20は東京にあります！あと${minutesLeft}分`)
                 break;
             case 9:
-                bot.sendMessage(chatId, `The next 4:20 are in Brisbane! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Brisbane. Australia! ${minutesLeft} minutes to go`)
                 break;
             case 10:
-                bot.sendMessage(chatId, `The next 4:20 are in Melbourne! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Melbourne, Australia! ${minutesLeft} minutes to go`)
                 break;
             case 11:
-                bot.sendMessage(chatId, `The next 4:20 are in Norfolk Island! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Norfolk Island, Australia! ${minutesLeft} minutes to go`)
                 break;
             case 12:
-                bot.sendMessage(chatId, `The next 4:20 are in Auckland! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Auckland, New Zealand! ${minutesLeft} minutes to go`)
                 break;
             case 13:
-                bot.sendMessage(chatId, `The next 4:20 are in Kiribati! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Kiribati, Kiribati! ${minutesLeft} minutes to go`)
                 break;
             case 14:
-                bot.sendMessage(chatId, `The next 4:20 are in Adak! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Adak, Alaska! ${minutesLeft} minutes to go`)
                 break;
             case 15:
-                bot.sendMessage(chatId, `The next 4:20 are in Anchorage! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Anchorage, Alaska! ${minutesLeft} minutes to go`)
                 break;
             case 16:
-                bot.sendMessage(chatId, `The next 4:20 are in Vancouver! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Vancouver, Canada! ${minutesLeft} minutes to go`)
                 break;
             default:
-                bot.sendMessage(chatId, `The next 4:20 are in Vancouver! ${minutesLeft} minutes to go`)
+                bot.sendMessage(chatId, `The next 4:20 are in Vancouver, Canada! ${minutesLeft} minutes to go`)
                 break;
         }
 

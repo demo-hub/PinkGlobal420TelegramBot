@@ -39,8 +39,10 @@ exports.__esModule = true;
 var timeNotification_1 = require("./functions/timeNotification");
 require('dotenv').config();
 var http = require('http');
+var mongoose = require('mongoose');
 var TelegramBot = require('node-telegram-bot-api');
 var botConfig = require("./botConfig");
+var nicknameCRUD = require("./MongoDB/CRUD/CustomNicknamesCRUD");
 var token = process.env.TOKEN;
 var bot = new TelegramBot(token, { polling: true });
 var server = http.createServer(function (req, res) {
@@ -72,10 +74,42 @@ server.listen(process.env.PORT || 5000, function () {
     //commands.ping(bot)
 });
 function handleMentions(msg) {
-    var checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
-    if (checkBotMention.test(msg.text)) {
-        bot.sendMessage(msg.chat.id, "Fazeçe irmão");
-    }
+    return __awaiter(this, void 0, void 0, function () {
+        var checkBotMention, connector, customNick, mention;
+        var _this = this;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    checkBotMention = new RegExp(/(.?)@PinkGlobal420Bot(.?)/);
+                    connector = mongoose.connect(botConfig.connectionString, {
+                        useNewUrlParser: true
+                    });
+                    return [4 /*yield*/, connector.then(function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                return [2 /*return*/, nicknameCRUD.GetUserByID(msg.from.id)];
+                            });
+                        }); })];
+                case 1:
+                    customNick = _a.sent();
+                    if (checkBotMention.test(msg.text)) {
+                        if (customNick == null) {
+                            if (!msg.from.username) {
+                                customNick = msg.from.first_name;
+                            }
+                            else {
+                                customNick = "@" + msg.from.username;
+                            }
+                        }
+                        mention = "[" + customNick + "](tg://user?id=" + msg.from.id + ")";
+                        bot.sendMessage(msg.chat.id, "Hi " + mention + "\nFaze\u00E7e irm\u00E3o", {
+                            parse_mode: "MarkdownV2"
+                        });
+                        // bot.sendMessage(msg.chat.id, "Fazeçe irmão");
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
 }
 function handleUserMessages(msg) {
     //This is a temporary solution
