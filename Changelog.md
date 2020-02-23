@@ -1,8 +1,13 @@
-## [4.2.0] - 
+## [4.2.0] - 23/02/2020
 
 ### Added
 
+- When a time notification is ready, the google maps photo is sent and the notification message is attached as the photo's caption, instead of sending 2 separate messages
 - 'zoom' parameter in /globe command
+
+### Fixed
+
+- Added google maps photo to the Islamabad time notification
 
 ### Changed
 
