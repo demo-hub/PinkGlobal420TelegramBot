@@ -11,3 +11,5 @@ node_modules
 *.js.map
 
 secrets.ts
+*.local
+*.test

@@ -6,6 +6,7 @@ import { globalAgent } from "http";
 import Globe from "./functions/commands/globe";
 import Nickname from "./functions/commands/nickname"
 import * as secret from "./secret"
+import Strain from "./functions/commands/strain";
 
 export let config = {
     "commands": [
@@ -14,7 +15,8 @@ export let config = {
         new Ping(),
         new Help(),
         new Globe(),
-        new Nickname()
+        new Nickname(),
+        new Strain()
     ]
 }
 
