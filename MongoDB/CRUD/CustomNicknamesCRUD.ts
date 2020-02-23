@@ -1,6 +1,6 @@
 import * as mongoose from "mongoose";
 
-const customNicknamesSchema = require("../Schemas/CustomNicknamesSchema");
+const customNicknamesSchema = require("../Schemas/CustomNicknamesSchema.ts");
 const CustomNickname = mongoose.model(
   "customNickname",
   customNicknamesSchema,
