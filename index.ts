@@ -25,7 +25,7 @@ loadCommands(`${__dirname}/functions/commands`);
 server.listen(process.env.PORT || 5000, () => {
     console.log(`Server running`);
 
-    bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.2.0\nYou can see the changes in https://github.com/demo-hub/PinkGlobal420TelegramBot/blob/master/Changelog.md\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Twitter or Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot.\nThank you José Pinto (@JoseAoQuadrado) and Luis Azevedo (https://github.com/LuisAzeved) for your contributions!\nIf you want to help please go on Github and star and/or watch the project or follow me and José Pinto on Twitter @suembra and @JoseAoQuadrado')
+    bot.sendMessage(process.env.CHAT_ID, 'Updated to version 4.2.0\nYou can see the changes in https://github.com/demo-hub/PinkGlobal420TelegramBot/blob/master/Changelog.md\n\nIf you have any doubt, contribution or suggestion please feel free to hit me up in Twitter or Telegram @suembra or create an issue in Github https://github.com/demo-hub/PinkGlobal420TelegramBot.\nThank you José Pinto (https://twitter.com/JoseAoQuadrado) and Luis Azevedo (https://github.com/LuisAzeved) for your contributions!\nIf you want to help please go on Github and star and/or watch the project or follow me and José Pinto on Twitter @suembra and @JoseAoQuadrado')
 
     new TimeNotification().timeNotification(bot);
 
