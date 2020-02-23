@@ -4,6 +4,7 @@ import Ping from "./functions/commands/ping";
 import Help from "./functions/commands/help";
 import { globalAgent } from "http";
 import Globe from "./functions/commands/globe";
+import Strain from "./functions/commands/strain";
 
 export let config = {
     "commands": [
@@ -11,6 +12,7 @@ export let config = {
         new Next(),
         new Ping(),
         new Help(),
-        new Globe()
+        new Globe(),
+        new Strain()
     ]
 }
