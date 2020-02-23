@@ -1,3 +1,13 @@
+## [4.2.0] - 14/02/2020
+
+### Added
+
+- When a time notification is ready, the google maps photo is sent and the notification message is attached as the photo's caption, instead of sending 2 separate messages
+
+### Fixed
+
+- Added google maps photo to the Islamabad time notification
+
 ## [4.1.5] - 14/02/2020
 
 ### Fixed
